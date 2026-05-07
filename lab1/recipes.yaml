@@ -1,0 +1,49 @@
+---
+'1':
+  title: Борщ
+  ingredients:
+  - буряк
+  - капуста
+  - морква
+  steps:
+  - нарізати овочі
+  - зварити бульйон
+  - додати овочі
+  category: Супи
+  cooking_time: 60
+  servings: 6
+  difficulty: easy
+  created_at: '2024-02-15'
+  published: false
+'2':
+  title: Вареники
+  ingredients:
+  - борошно
+  - картопля
+  - цибуля
+  steps:
+  - замісити тісто
+  - приготувати начинку
+  - зліпити
+  category: Основні страви
+  cooking_time: 90
+  servings: 6
+  difficulty: medium
+  created_at: '2024-02-20'
+  published: true
+'3':
+  title: Омлет
+  ingredients:
+  - яйця
+  - молоко
+  - сіль
+  steps:
+  - збити яйця з молоком
+  - вилити на пательню
+  - смажити 5 хв
+  category: Сніданки
+  cooking_time: 10
+  servings: 2
+  difficulty: easy
+  created_at: '2024-03-01'
+  published: true
