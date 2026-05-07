@@ -18,7 +18,7 @@
           <div class="col-sm-6">
             <div class="p-3 bg-light rounded">
               <div class="text-muted small mb-1">Складність</div>
-              <span class="badge badge-<%= @recipe.difficulty %> fs-6"><%= @recipe.difficulty %></span>
+              <%= difficulty_badge(@recipe) %>
             </div>
           </div>
           <div class="col-sm-6">

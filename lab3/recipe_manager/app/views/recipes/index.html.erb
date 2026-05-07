@@ -28,7 +28,7 @@
               <% if recipe.category.present? %>
                 <span class="badge bg-primary"><%= recipe.category %></span>
               <% end %>
-              <span class="badge badge-<%= recipe.difficulty %>"><%= recipe.difficulty %></span>
+              <%= difficulty_badge(recipe) %>
             </div>
 
             <p class="card-text text-muted small mb-0">
