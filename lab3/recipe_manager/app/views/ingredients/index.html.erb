@@ -1,0 +1,40 @@
+<% content_for :title, "Інгредієнти" %>
+
+<div class="d-flex align-items-center justify-content-between mb-4">
+  <h1 class="h2 mb-0">Інгредієнти</h1>
+  <%= link_to "+ Новий інгредієнт", new_ingredient_path, class: "btn btn-success" %>
+</div>
+
+<% if @ingredients.empty? %>
+  <div class="text-center py-5 text-muted">
+    <p class="fs-5">Інгредієнтів ще немає.</p>
+    <%= link_to "Додати інгредієнт", new_ingredient_path, class: "btn btn-success mt-2" %>
+  </div>
+<% else %>
+  <div class="card shadow-sm border-0">
+    <table class="table table-hover mb-0">
+      <thead class="table-success">
+        <tr>
+          <th>Назва</th>
+          <th class="text-end">Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ingredients.each do |ingredient| %>
+          <tr>
+            <td class="align-middle fw-medium"><%= ingredient.name %></td>
+            <td class="text-end align-middle">
+              <%= link_to "Переглянути", ingredient,                     class: "btn btn-sm btn-outline-success" %>
+              <%= link_to "Редагувати",  edit_ingredient_path(ingredient), class: "btn btn-sm btn-outline-secondary" %>
+              <%= button_to "Видалити", ingredient,
+                    method: :delete,
+                    form: { class: "d-inline" },
+                    class: "btn btn-sm btn-outline-danger",
+                    data: { turbo_confirm: "Видалити «#{ingredient.name}»?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

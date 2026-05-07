@@ -1,0 +1,19 @@
+<%= form_with(model: category) do |form| %>
+  <% if category.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, "Назва", class: "form-label fw-medium" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Назва категорії" %>
+  </div>
+
+  <%= form.submit category.new_record? ? "Створити" : "Зберегти",
+        class: "btn btn-success px-4" %>
+<% end %>

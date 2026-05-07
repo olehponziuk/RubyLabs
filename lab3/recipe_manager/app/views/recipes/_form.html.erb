@@ -1,0 +1,55 @@
+<%= form_with(model: recipe, class: "needs-validation") do |form| %>
+  <% if recipe.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% recipe.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, "Назва", class: "form-label fw-medium" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Назва рецепту" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :category, "Категорія", class: "form-label fw-medium" %>
+    <% if @categories.any? %>
+      <%= form.select :category, @categories,
+            { include_blank: "— оберіть категорію —" },
+            class: "form-select" %>
+    <% else %>
+      <div class="alert alert-warning py-2 mb-0">
+        Категорій немає. <%= link_to "Створіть категорію", new_category_path %> перед тим як додавати рецепт.
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <div class="col-sm-6">
+      <%= form.label :cooking_time, "Час приготування (хв)", class: "form-label fw-medium" %>
+      <%= form.number_field :cooking_time, class: "form-control", min: 1 %>
+    </div>
+    <div class="col-sm-6">
+      <%= form.label :servings, "Порції", class: "form-label fw-medium" %>
+      <%= form.number_field :servings, class: "form-control", min: 1 %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :difficulty, "Складність", class: "form-label fw-medium" %>
+    <%= form.select :difficulty, Recipe.difficulties.keys.map { |k| [k.capitalize, k] },
+          {},
+          class: "form-select" %>
+  </div>
+
+  <div class="form-check mb-4">
+    <%= form.check_box :published, class: "form-check-input" %>
+    <%= form.label :published, "Опублікувати рецепт", class: "form-check-label" %>
+  </div>
+
+  <%= form.submit recipe.new_record? ? "Створити рецепт" : "Зберегти зміни",
+        class: "btn btn-success px-4" %>
+<% end %>

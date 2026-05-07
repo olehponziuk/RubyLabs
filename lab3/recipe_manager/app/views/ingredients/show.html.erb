@@ -1,0 +1,23 @@
+<% content_for :title, @ingredient.name %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0">
+      <div class="card-header bg-success text-white">
+        <h2 class="h5 mb-0">Інгредієнт</h2>
+      </div>
+      <div class="card-body p-4">
+        <p class="fs-4 fw-semibold mb-0"><%= @ingredient.name %></p>
+      </div>
+      <div class="card-footer bg-transparent d-flex gap-2">
+        <%= link_to "✏ Редагувати", edit_ingredient_path(@ingredient), class: "btn btn-outline-success" %>
+        <%= button_to "🗑 Видалити", @ingredient,
+              method: :delete,
+              form: { class: "d-inline" },
+              class: "btn btn-outline-danger",
+              data: { turbo_confirm: "Видалити «#{@ingredient.name}»?" } %>
+        <%= link_to "← Назад", ingredients_path, class: "btn btn-light ms-auto" %>
+      </div>
+    </div>
+  </div>
+</div>

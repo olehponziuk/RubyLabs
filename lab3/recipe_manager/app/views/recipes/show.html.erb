@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card shadow-sm border-0">
+      <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+        <h2 class="h4 mb-0"><%= @recipe.title %></h2>
+        <% if @recipe.published %>
+          <span class="badge bg-light text-success">Опубліковано</span>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="p-3 bg-light rounded">
+              <div class="text-muted small mb-1">Категорія</div>
+              <strong><%= @recipe.category.presence || "—" %></strong>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="p-3 bg-light rounded">
+              <div class="text-muted small mb-1">Складність</div>
+              <span class="badge badge-<%= @recipe.difficulty %> fs-6"><%= @recipe.difficulty %></span>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="p-3 bg-light rounded">
+              <div class="text-muted small mb-1">Час приготування</div>
+              <strong>⏱ <%= @recipe.cooking_time %> хв</strong>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="p-3 bg-light rounded">
+              <div class="text-muted small mb-1">Порції</div>
+              <strong>🍽 <%= @recipe.servings %></strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer bg-transparent d-flex gap-2">
+        <%= link_to "✏ Редагувати", edit_recipe_path(@recipe), class: "btn btn-outline-success" %>
+        <%= button_to "🗑 Видалити", @recipe,
+              method: :delete,
+              form: { class: "d-inline" },
+              class: "btn btn-outline-danger",
+              data: { turbo_confirm: "Видалити «#{@recipe.title}»?" } %>
+        <%= link_to "← Назад",     recipes_path, class: "btn btn-light ms-auto" %>
+      </div>
+    </div>
+  </div>
+</div>
