@@ -1,5 +1,5 @@
-FROM ruby:3.3-alpine
-RUN apk add --no-cache build-base postgresql-dev tzdata git
+FROM ruby:3.3.11-slim
+RUN apt-get update -qq && apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev tzdata && rm -rf /var/lib/apt/lists
 WORKDIR /rails
 COPY Gemfile Gemfile.lock ./
 RUN bundle install

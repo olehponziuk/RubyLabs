@@ -45,6 +45,11 @@
           class: "form-select" %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :steps, "Кроки приготування", class: "form-label fw-medium" %>
+    <%= form.text_area :steps, class: "form-control", rows: 5, placeholder: "Опишіть покрокове приготування..." %>
+  </div>
+
   <div class="form-check mb-4">
     <%= form.check_box :published, class: "form-check-input" %>
     <%= form.label :published, "Опублікувати рецепт", class: "form-check-label" %>

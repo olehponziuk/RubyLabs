@@ -8,10 +8,12 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   web:
-    build: .
+    build:
+      context: ./recipe_manager
+      dockerfile: Dockerfile.dev
     command: bundle exec rails server -b 0.0.0.0
     volumes:
-      - .:/rails
+      - ./recipe_manager:/rails
     ports:
       - "3000:3000"
     depends_on:

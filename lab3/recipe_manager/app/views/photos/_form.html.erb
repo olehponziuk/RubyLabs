@@ -1,0 +1,26 @@
+<%= form_with(model: photo) do |form| %>
+  <% if photo.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% photo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :recipe_id %>
+
+  <div class="mb-3">
+    <%= form.label :url, "URL фото", class: "form-label fw-medium" %>
+    <%= form.url_field :url, class: "form-control", placeholder: "https://..." %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :caption, "Підпис", class: "form-label fw-medium" %>
+    <%= form.text_field :caption, class: "form-control", placeholder: "Необов'язково" %>
+  </div>
+
+  <%= form.submit photo.new_record? ? "Додати фото" : "Зберегти",
+        class: "btn btn-success px-4" %>
+<% end %>

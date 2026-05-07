@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_07_204251) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_07_215640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,6 +26,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_07_204251) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "caption"
+    t.datetime "created_at", null: false
+    t.integer "recipe_id"
+    t.datetime "updated_at", null: false
+    t.string "url"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "category"
     t.integer "cooking_time"
@@ -33,6 +41,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_07_204251) do
     t.integer "difficulty"
     t.boolean "published"
     t.integer "servings"
+    t.text "steps"
     t.string "title"
     t.datetime "updated_at", null: false
   end

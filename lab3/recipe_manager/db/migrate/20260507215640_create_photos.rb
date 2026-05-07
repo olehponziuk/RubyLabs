@@ -1,0 +1,11 @@
+class CreatePhotos < ActiveRecord::Migration[8.1]
+  def change
+    create_table :photos do |t|
+      t.string :caption
+      t.string :url
+      t.integer :recipe_id
+
+      t.timestamps
+    end
+  end
+end

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resources :categories
   resources :ingredients
+  resources :photos
 
   resources :recipes do
     collection do
       get :published
+      get :quick
     end
   end
 

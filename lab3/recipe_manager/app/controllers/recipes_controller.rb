@@ -7,10 +7,16 @@ class RecipesController < ApplicationController
   end
 
   def published
-    @recipes = Recipe.where(published: true)
+    @recipes = Recipe.published
   end
 
-  def show; end
+  def quick
+    @recipes = Recipe.quick.order(:cooking_time)
+  end
+
+  def show
+    @photos = Photo.where(recipe_id: @recipe.id)
+  end
 
   def new
     @recipe = Recipe.new
@@ -51,6 +57,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :category, :cooking_time, :servings, :difficulty, :published)
+    params.require(:recipe).permit(:title, :category, :cooking_time, :servings, :difficulty, :published, :steps)
   end
 end
